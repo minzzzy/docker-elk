@@ -19,7 +19,7 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
+      # ELASTIC_PASSWORD: changeme
       # Use single node discovery in order to disable production mode and avoid bootstrap checks
       # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
       discovery.type: single-node
@@ -74,6 +74,16 @@ services:
       - log-data:/test-application/kiworkshop/spring
     ports:
       - "8080:8080"
+
+  filebeat:
+    build:
+      context: filebeat/
+    volumes:
+      - log-data:/var/log/server
+    networks:
+      - elk
+    depends_on:
+      - logstash
 
 networks:
   elk:
