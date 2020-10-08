@@ -41,8 +41,7 @@ services:
         target: /usr/share/logstash/pipeline
         read_only: true
     ports:
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
+      - "5000:5000"
       - "9600:9600"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
@@ -68,9 +67,18 @@ services:
     depends_on:
       - elasticsearch
 
+  app:
+    build:
+      context: app/
+    volumes:
+      - log-data:/test-application/kiworkshop/spring
+    ports:
+      - "8080:8080"
+
 networks:
   elk:
     driver: bridge
 
 volumes:
   elasticsearch:
+  log-data:
