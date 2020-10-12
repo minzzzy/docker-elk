@@ -3,6 +3,10 @@ filebeat.inputs:
     enabled: true
     paths:
       - "/var/log/server/*.log"
+    json:
+      message_key: message
+      keys_under_root: true
+      add_error_key: true
 
 output.logstash:
   hosts: ["logstash:5000"]
