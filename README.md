@@ -436,3 +436,6 @@ instead of `elasticsearch`.*
 [upgrade]: https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html
 
 [swarm-mode]: https://docs.docker.com/engine/swarm/
+
+## Reference
+* To add app and filbeat docker, I referenced this [blog](https://eunsukim.me/posts/build-logging-system-with-docker-elk-filebeat-nodejs)
