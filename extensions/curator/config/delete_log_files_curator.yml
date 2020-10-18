@@ -12,9 +12,9 @@ actions:
     filters:
     - filtertype: pattern
       kind: prefix
-      value: logstash-
+      value: elk-
     - filtertype: age
       source: creation_date
       direction: older
-      unit: days
+      unit: minutes
       unit_count: ${UNIT_COUNT}
