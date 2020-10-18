@@ -13,8 +13,7 @@ actions:
     - filtertype: pattern
       kind: prefix
       value: elk-
-    - filtertype: age
+    - filtertype: space
+      disk_space: 0.001 # gigabytes
+      use_age: True
       source: creation_date
-      direction: older
-      unit: minutes
-      unit_count: ${UNIT_COUNT}
