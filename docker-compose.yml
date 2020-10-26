@@ -68,9 +68,28 @@ services:
     depends_on:
       - elasticsearch
 
+  db:
+    build:
+      context: db/
+    environment:
+      MYSQL_DATABASE: test_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: ming
+      MYSQL_PASSWORD: ming
+    ports:
+      - "33069:3306"
+    command: 
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    networks:
+      - elk
+    volumes:
+      - my_db:/var/lib/mysql
+
 networks:
   elk:
     driver: bridge
 
 volumes:
   elasticsearch:
+  my_db:
